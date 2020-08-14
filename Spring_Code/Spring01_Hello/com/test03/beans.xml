@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="bean01" class="com.test03.MessageBeanEn"></bean>
+	<!-- MessageBeanEn bean01 = new MessageBeanEn(); -->
+	<!-- MessageBeanEn클래스를 가지고 bean01이라는 객체를 생성 -->
+	<bean id="bean02" class="com.test03.MessageBeanKo"></bean>
+	<!-- MessageBeanKo bean02 = new MessageBeanKo(); -->
+	<!-- bean을 보면 자바 클래스나 자바 객체라고 생각하자 -->
+</beans>
