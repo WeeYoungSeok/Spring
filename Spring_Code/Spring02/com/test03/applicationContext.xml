@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- setter injection -->
+	<bean id="wee" class="com.test03.Address">
+		<property name="name" value="위영석"/>
+		<property name="addr" value="서울시 중랑구"/>
+		<property name="phone" value="010-5551-8274"/>
+	</bean>
+	<!-- 
+		Address wee = new Address();
+		wee.setName("위영석");
+		wee.setAddr("서울시 중랑구");
+		wee.setPhone("010-5551-8274);
+	 -->
+	 
+	 <bean id="hong" class="com.test03.Address">
+	 	<property name="name" value="홍길동"/>
+	 	<property name="addr" value="서울시 강남구"/>
+		<property name="phone" value="010-0000-0000"/>
+	 </bean>
+</beans>

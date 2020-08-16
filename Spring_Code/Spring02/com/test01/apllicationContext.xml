@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="apple" class="com.test01.MessageBeanImpl"></bean>
+	<!-- MessageBeanImpl apple = new MessageBeanImpl(); -->
+	
+	<!-- DI(Dependency Injection -->
+	<bean id="watermelon" class="com.test01.MessageBeanImpl">
+		<constructor-arg>
+		<!-- 첫번째 생성자 아규먼트에는 WATERMELONE이라는 아규먼트가 들어감 -->
+			<value>WATERMELON</value>
+		</constructor-arg>
+		<!-- 첫번째 생성자 아규먼트에는 20000이라는 아규먼트가 들어감 -->
+		<constructor-arg value="20000"></constructor-arg>
+	</bean>
+	<!-- MessageBeanImpl watermelon = new MessageBeanImpl("WATERMELON", 20000); -->
+	
+	<bean id="melon" class="com.test01.MessageBeanImpl">
+		<constructor-arg index="1" value="5000"></constructor-arg>
+		<constructor-arg index="0" value="참외"></constructor-arg>
+	</bean>
+
+</beans>
