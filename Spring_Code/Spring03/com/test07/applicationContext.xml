@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	
+	
+	<bean id="ig" class="com.test07.IgTV" lazy-init="true" />
+	<bean id="samsong" class="com.test07.SamsongTV" ></bean>
+	
+	<!-- lazy-init=true : 초기화를 게으르게 하게한다. -->
+	<!-- IoC가 만들어지는 순간 객체 생성은 한다.(lazy-init=true가 없으면) -->
+	<!-- 해당 bean이 호출될때까지 객체를 만들지 않는다. (lazy-init=true가 있으면) -->
+	<!-- MTest에서 보면 해당 bean이 호출 되는순간
+		 기본생성자의 syso문이 찍힌다.
+		 호출이 되지않으면 객체를 생성하지도 않는다.
+		 lazy-init true가 없으면 호출을 안해도 factory를 여는 순간
+		 객체가 생성되어서 syso문이 찍힌다. -->
+	
+
+
+</beans>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- Namespaces에서 c는 생성자 constructor를 의미 p는 property를 의미 -->
+	
+	<!-- c : 생성자 -->
+	<bean id="wee" class="com.test05.Emp" c:name="위영석" c:salary="5000000"/>
+	<bean id="weess" class="com.test05.Engineer" c:emp-ref="wee" c:dept="기술팀"/>
+	
+	<!-- p : setter -->
+	<bean id="hong" class="com.test05.Emp" p:name="홍길동" p:salary="10000000"/>
+	<bean id="honggd" class="com.test05.Developer" p:emp-ref="hong" p:dept="개발팀"/>
+	
+	
+</beans>

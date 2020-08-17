@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="wee" class="com.test04.Emp">
+		<property name="name" value="위영석"/>
+		<property name="salary" value="5000000"/>
+	</bean>
+	
+	<!-- ref : 참조 -->
+	<!-- 위의 wee라는걸 참조해서 값을 주입시켜줌 -->
+	<bean id="weess" class="com.test04.Engineer">
+		<constructor-arg name="emp" ref="wee"/>
+		<constructor-arg name="dept" value="기술팀"/>
+	</bean>
+	
+	
+	
+	<bean id="hong" class="com.test04.Emp">
+		<property name="name" value="홍길동"/>
+		<property name="salary" value="2485311"/>
+	</bean>
+	
+	<bean id="honggd" class="com.test04.Developer">
+		<constructor-arg name="emp" ref="hong"/>
+		<constructor-arg name="dept" value="개발팀"/>
+	</bean>
+</beans>
