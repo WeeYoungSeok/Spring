@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="myClass" class="com.test01.MyClass" />
+	
+	<bean id="date" class="java.util.Date">
+		<constructor-arg index="0" value="120" />
+		<constructor-arg index="1" value="3" />
+		<constructor-arg index="2" value="14" />
+	</bean>
+
+	<bean id="beanTest01" class="com.test01.BeanTest">
+		<constructor-arg ref="date" />
+	</bean>
+
+	<!-- Date date = new Date(120, 3, 14); 2020 4 14 BeanTest beanTest01 = new 
+		BeanTest(date); -->
+
+	<bean id="beanTest02" class="com.test01.BeanTest">
+		<constructor-arg ref="myClass" />
+	</bean>
+
+	<bean id="beanTest" class="com.test01.BeanTest">
+		<!-- 1. public BeanTest(Date date) 호출 -->
+		<constructor-arg ref="date" />
+
+		<!-- 2. setMyClass(MyClass myClass) 호출 -->
+		<property name="myClass" ref="myClass" />
+
+		<!-- 3. setDate(Date date) 호출 -->
+		<property name="date" ref="today" />
+
+		<!-- 4. setNumber(int num) 호출 -->
+		<!-- 이것은 필드를 찾는게아님 무조건 setter를 찾음 -->
+		<property name="number">
+			<value type="short">3</value>
+		</property>
+
+		<!-- 5. setArray(String[] arr) 호출 : {"위영석"..} -->
+		<property name="array">
+			<array>
+				<value>위영석</value>
+				<value>한지용</value>
+				<value>박정은</value>
+			</array>
+		</property>
+
+		<!-- 6. setList(List<String> list) 호출 -->
+		<property name="list">
+			<list>
+				<value>봄</value>
+				<value>여름</value>
+				<value>가을</value>
+				<value>겨울</value>
+			</list>
+		</property>
+
+		<!-- 7. setSet(Set<String> set) 호출 -->
+		<property name="set">
+			<set>
+				<value>1</value>
+				<value>2</value>
+				<value>3</value>
+				<value>3</value>
+				<value>4</value>
+			</set>
+		</property>
+		<!-- set은 중복값 허용 x -->
+
+		<!-- 8. setMap(Map<String, String> map) 호출 -->
+		<property name="map">
+
+			<map>
+				<entry>
+					<key>
+						<value>1</value>
+					</key>
+					<value>봄</value>
+				</entry>
+				<entry key="2" value="여름" />
+				<entry key="3" value="가을" />
+				<entry key="4" value="겨울" />
+			</map>
+		</property>
+
+		<!-- 9. setScore(List<Score> list) 호출 : 2개는 inner bean, 1개는 ref -->
+		<property name="score">
+			<list>
+
+				<bean class="com.test01.Score">
+					<constructor-arg name="name" value="위영석" />
+					<constructor-arg name="kor" value="40" />
+					<constructor-arg name="eng" value="60" />
+					<constructor-arg name="math" value="70" />
+				</bean>
+
+				<bean class="com.test01.Score">
+					<property name="name" value="박정은"></property>
+					<property name="kor" value="90"></property>
+					<property name="eng" value="60"></property>
+					<property name="math" value="70"></property>
+				</bean>
+				<ref bean="score" />
+			</list>
+		</property>
+	</bean>
+
+
+	<bean id="score" class="com.test01.Score">
+		<property name="name" value="한지용"></property>
+		<property name="kor" value="55"></property>
+		<property name="eng" value="60"></property>
+		<property name="math" value="70"></property>
+	</bean>
+
+	<bean id="today" class="java.util.Date" />
+</beans>
