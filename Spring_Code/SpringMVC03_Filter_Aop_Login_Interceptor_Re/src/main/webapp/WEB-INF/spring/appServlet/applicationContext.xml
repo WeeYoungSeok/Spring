@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+		
+	<!-- db.properties -->
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:mybatis/db.properties</value>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- dataSource -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="${oracle.driver}" />
+		<property name="url" value="${oracle.url}" />
+		<property name="username" value="${oracle.username}" />
+		<property name="password" value="${oracle.password}" />
+	</bean>
+	
+	<!-- mybatis -->
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="configLocation" value="/WEB-INF/spring/sqls/config.xml" />
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	
+	<!-- sqlSessionTemplate -->
+	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sqlSession"/>
+	</bean>
+</beans>
