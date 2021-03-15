@@ -1,0 +1,44 @@
+SpringMVC03
+1. pom.xml : ojdbc6.jar / mybatis, mybatis-spring / commons-dbcp / spring-orm
+2. web.xml
+3. myboard.sql (/WEB-INF/spring/sqls/myboard.sql)
+4. BoardDto, BoardDao(Impl), BoardBiz(Impl), BoardController
+5. board-mapper.xml (src/main/resources/mybatis/board-mapper.xml)
+6. db.properties (src/main/resources/mybatis/db.properties)
+7. config.xml (/WEB-INF/spring/sqls/config.xml)
+8. applicationContext.xml
+
+Filter
+9. LogFilter (com.mvc.upgrade.common.filter.LogFilter) impl javax.servlet.Filter
+10. web.xml
+
+Aop
+11. pom.xml : org.aspectj. (aspectjrt, aspectjweaver
+12. LogAop (com.mvc.upgrade.common.aop.LogAop)
+13. aop-context.xml (WEB-INF/spring/appServlet/aop-context.xml)
+14. web.xml
+15. log4j.xml (src/main/resources/log4j.xml)
+
+
+_Login
+16. pom.xml : jackson-core-asl, jackson-mapper-asl (spring 4.x 부터는 jackson-core / jackson-databind 사용해야 한다. 중요!!)
+17. mymember.sql (WEB-INF/spring/sqls/mymember.sql)
+18. MemberDto, MemberDao, MemberBiz, MemberController
+19. member-mapper.xml (src/main/resources/mybatis/member-mapper.xml)
+20. config.xml (/WEB-INF/spring/sqls/config.xml)
+
+_Interceptor
+21. LoginInterceptor (com.mvc.upgrade.common.interceptor.LoginInterceptor impl HandlerInerceptor)
+22. servlet-context.xml
+
+_Transaction
+23. (board)dao, biz, controller
+24. servlet-context.xml (namespace "tx")
+25. applicationContext.xml : transactionManager
+
+_Security
+26. pom.xml : spring-security-web
+27. security-context.xml (WEB-INF/spring/appServlet/security-context.xml)
+28. web.xml
+29. (member)dao, biz, controller
+30. member-mapper.xml
