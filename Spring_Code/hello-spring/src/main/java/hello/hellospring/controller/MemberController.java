@@ -42,6 +42,11 @@ public class MemberController {
 	public MemberController(MemberService memberService) {
 		super();
 		this.memberService = memberService;
+		// aop 가짜를 찍어보기 위해 (실제 proxy가 주입되는지)
+		// DI라는 주입때문에 이런게 다 가능한거다 그냥 나는 주입만 받을게 같은 타입을 넣어줘
+		// 하면 proxy같은 가짜 클래스도 받을 수가 있는거다.
+		// 우리가 기존에 사용했던 new이런것들로 개발을 하면 불가능하다.
+		System.out.println("memberService = " + memberService.getClass());
 	}
 	
 	// 연결은 생성자로 연결해주자
